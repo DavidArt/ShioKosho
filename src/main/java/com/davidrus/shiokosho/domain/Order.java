@@ -12,11 +12,11 @@ import javax.persistence.*;
 @Setter
 @Entity
 @NamedQueries({
-        @NamedQuery(name = Order.GET_RECIPE_BY_ID, query = "SELECT o FROM Order o WHERE o.id = :id")
+        @NamedQuery(name = Order.GET_ORDER_BY_ID, query = "SELECT o FROM Order o WHERE o.id = :id")
 })
 public class Order {
 
-    public static final String GET_RECIPE_BY_ID = "getRecipeById0";
+    public static final String GET_ORDER_BY_ID = "getRecipeById0";
 
     @Id
     @GeneratedValue

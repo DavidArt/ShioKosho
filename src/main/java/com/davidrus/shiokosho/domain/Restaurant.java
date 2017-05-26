@@ -13,11 +13,13 @@ import java.util.List;
 @Setter
 @Entity
 @NamedQueries({
-        @NamedQuery(name = Restaurant.GET_RESTAURANT_BY_ID, query = "SELECT r FROM Restaurant r WHERE r.id =:id")
+        @NamedQuery(name = Restaurant.GET_RESTAURANT_BY_ID, query = "SELECT r FROM RestaurantDao r WHERE r.id = :id"),
+        @NamedQuery(name = Restaurant.GET_RESTAURANT_BY_NAME, query = "SELECT r FROM Restaurant r WHERE r.name = :name")
 })
 public class Restaurant {
 
     public static final String GET_RESTAURANT_BY_ID = "getRestaurantById";
+    public static final String GET_RESTAURANT_BY_NAME = "getRestaurantByName";
 
     @Id
     @GeneratedValue
@@ -38,7 +40,7 @@ public class Restaurant {
 
     @Override
     public String toString() {
-        return "Restaurant{" +
+        return "RestaurantDao{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", address='" + address + '\'' +
