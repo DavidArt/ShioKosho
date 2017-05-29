@@ -1,89 +1,198 @@
 databaseChangeLog:
-#  - changeSet:
-#      id: 1
-#      author: david
-#      changes:
-#        - createTable:
-#            tableName: company
-#            columns:
-#              - column:
-#                  name: id
-#                  type: bigint
-#                  autoIncrement: true
-#                  constraints:
-#                    primaryKey: true
-#                    nullable: false
-#              - column:
-#                  name: name
-#                  type: varchar(45)
-#                  constraints:
-#                    nullable: false
-#              - column:
-#                  name: address
-#                  type: varchar(45)
-#                  constraints:
-#                    nullable: false
-#              - column:
-#                  name: owner_id
-#                  type: bigint
-#                  constraints:
-#                    nullable: false
-#
-#  - changeSet:
-#      id: 2
-#      author: david
-#      changes:
-#        - createTable:
-#            tableName: review
-#            columns:
-#              - column:
-#                  name: id
-#                  type: bigint
-#                  autoIncrement: true
-#                  constraints:
-#                    primaryKey: true
-#                    nullable: false
-#              - column:
-#                  name: reviewContent
-#                  type: varchar(45)
-#                  constraints:
-#                    nullable: false
-#              - column:
-#                  name: company_id
-#                  type: bigint
-#                  constraints:
-#                    nullable: false
-#              - column:
-#                  name: user_id
-#                  type: bigint
-#                  constraints:
-#                    nullable: false
-#  - changeSet:
-#      id: 3
-#      author: david
-#      changes:
-#        - createTable:
-#            tableName: user
-#            columns:
-#              - column:
-#                  name: id
-#                  type: bigint
-#                  autoIncrement: true
-#                  constraints:
-#                    primaryKey: true
-#                    nullable: false
-#              - column:
-#                  name: name
-#                  type: varchar(45)
-#                  constraints:
-#                    nullable: false
-#              - column:
-#                  name: email
-#                  type: varchar(45)
-#                  constraints:
-#                    nullable: false
-#              - column:
-#                  name: password
-#                  type: varchar(45)
-#                  constraints:
-#                    nullable: false
+  - changeSet:
+      id: 1
+      author: david
+      changes:
+        - createTable:
+            tableName: user
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(45)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: email
+                  type: varchar(45)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: password
+                  type: varchar(45)
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: 2
+      author: david
+      changes:
+        - createTable:
+            tableName: review
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: reviewContent
+                  type: varchar(45)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: restaurant_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: user_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: 3
+      author: david
+      changes:
+        - createTable:
+            tableName: restaurant
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(45)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: address
+                  type: varchar(200)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: menu_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: 4
+      author: david
+      changes:
+        - createTable:
+            tableName: recipe
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: recipeContent
+                  type: varchar(2000)
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: 5
+      author: david
+      changes:
+        - createTable:
+            tableName: order
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: orderContent
+                  type: varchar(200)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: restaurant_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: user_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: 6
+      author: david
+      changes:
+        - createTable:
+            tableName: menu
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: restaurant_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: 7
+      author: david
+      changes:
+        - createTable:
+            tableName: foodItem
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: foodItem
+                  type: varchar(45)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: menu_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: 8
+      author: david
+      changes:
+        - createTable:
+            tableName: cockingTip
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: cockingTip
+                  type: varchar(500)
+                  constraints:
+                    nullable: false

@@ -5,7 +5,6 @@ import com.davidrus.shiokosho.services.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import javax.annotation.Resource;
-import javax.transaction.Transactional;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -13,10 +12,9 @@ import javax.ws.rs.core.Response;
 /**
  * Created by david on 27-May-17.
  */
-
+@Controller
 @Slf4j
 @Path(RestConstants.USER_PATH)
-@Controller
 public class UserResource {
 
     @Resource
@@ -24,7 +22,6 @@ public class UserResource {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
     public Response createUser(User user) {
         if (userService.createUser(user)) {
             return Response.status(Response.Status.CREATED).build();
@@ -33,10 +30,8 @@ public class UserResource {
     }
 
     @GET
-    @Transactional
-    @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getUserName(@PathParam("id") Long id) {
+    public Response getUserById(@PathParam("id") Long id) {
         User user = userService.getUserById(id);
         if (user != null) {
             return Response.ok().entity(user).build();
@@ -45,9 +40,8 @@ public class UserResource {
     }
 
     @GET
-    @Transactional
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getUserName(@QueryParam("name") String name) {
+    public Response getUserByName(@QueryParam("name") String name) {
         User user = userService.getUserByName(name);
         if (user != null) {
             return Response.ok().entity(user).build();
@@ -65,7 +59,6 @@ public class UserResource {
     }
 
     @DELETE
-    @Path("{id}")
     public Response deleteUser(@PathParam("id") Long id) {
         if (userService.deleteUser(id)) {
             return Response.noContent().build();
